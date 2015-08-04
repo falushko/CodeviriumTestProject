@@ -22,6 +22,7 @@ public class DetailsActivity extends AppCompatActivity{
 
         toolbar = (Toolbar) findViewById(R.id.tool_bar_details);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mFirstName = (TextView) findViewById(R.id.detailFirstName);
         mLastName = (TextView) findViewById(R.id.detailLastName);

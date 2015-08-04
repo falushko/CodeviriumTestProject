@@ -13,17 +13,16 @@ import ru.feriatos.android.codeviriumtestproject.tab_fragments.SecondTabFragment
  */
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
-    CharSequence mTitles[]; // This will Store the Titles of the Tabs which are Going to be passed when ViewPagerAdapter is created
-    int mNumbOfTabs; // Store the number of tabs, this will also be passed when the ViewPagerAdapter is created
+    CharSequence mTitles[]; // titles of tabs
+    int mNumbOfTabs; // number of tabs
 
-    // Build a Constructor and assign the passed Values to appropriate values in the class
     public ViewPagerAdapter(FragmentManager fm, CharSequence titles[], int NumbOfTabs) {
         super(fm);
         this.mTitles = titles;
         this.mNumbOfTabs = NumbOfTabs;
     }
 
-    //This method return the fragment for the every position in the View Pager
+    // return the fragment for the every position in the View Pager
     @Override
     public Fragment getItem(int position) {
 
@@ -33,19 +32,16 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     }
 
-    // This method return the titles for the Tabs in the Tab Strip
+    // return the titles for the tabs in the tab strip
     @Override
     public CharSequence getPageTitle(int position) {
         return mTitles[position];
     }
 
-    // This method return the Number of tabs for the tabs Strip
+    // return the number of tabs for the tabs strip
     @Override
     public int getCount() {
         return mNumbOfTabs;
     }
 
-    public void startUpdate(){
-
-    }
 }

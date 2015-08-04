@@ -9,8 +9,6 @@ import ru.feriatos.android.codeviriumtestproject.sliding_tabs.SlidingTabLayout;
 
 public class MainActivity extends AppCompatActivity {
 
-    // Declaring Your View and Variables
-
     Toolbar toolbar;
     ViewPager pager;
     ViewPagerAdapter adapter;
@@ -23,22 +21,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Creating The Toolbar and setting it as the Toolbar for the activity
+        // toolbar creation
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
 
-        // Creating The ViewPagerAdapter and Passing Fragment Manager, Titles fot the Tabs and Number Of Tabs.
+        // create view pager
         adapter = new ViewPagerAdapter(getSupportFragmentManager(), titles, numberOfTabs);
 
-        // Assigning ViewPager View and setting the adapter
+        // assigning ViewPager view and setting the adapter
         pager = (ViewPager) findViewById(R.id.pager);
         pager.setAdapter(adapter);
 
-        // Assiging the Sliding Tab Layout View
+        // assiging the sliding tab layout view
         tabs = (SlidingTabLayout) findViewById(R.id.tabs);
-        tabs.setDistributeEvenly(true); // To make the Tabs Fixed set this true, This makes the tabs Space Evenly in Available width
+        tabs.setDistributeEvenly(true); // to make the tabs fixed set this true, this makes the tabs space evenly in available width
 
-        // Setting Custom Color for the Scroll bar indicator of the Tab View
+        // setting custom color for the scroll bar indicator of the tab view
         tabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
             @Override
             public int getIndicatorColor(int position) {
@@ -46,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Setting the ViewPager For the SlidingTabsLayout
+        // setting the ViewPager for the SlidingTabLayout
         tabs.setViewPager(pager);
 
     }

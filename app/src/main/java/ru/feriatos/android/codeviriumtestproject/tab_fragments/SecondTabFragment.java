@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +14,6 @@ import android.widget.Toast;
 import ru.feriatos.android.codeviriumtestproject.R;
 import ru.feriatos.android.codeviriumtestproject.SqlDataManager;
 
-/**
- * Created by hp1 on 21-01-2015.
- */
 public class SecondTabFragment extends Fragment {
 
     EditText mFirstName;
@@ -37,6 +33,7 @@ public class SecondTabFragment extends Fragment {
         mEmail = (EditText) v.findViewById(R.id.eMail);
         mSendButton = (Button) v.findViewById(R.id.send);
 
+        // gather entered data
         mSendButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -47,6 +44,7 @@ public class SecondTabFragment extends Fragment {
                 mUserData[2] = String.valueOf(mPhone.getText());
                 mUserData[3] = String.valueOf(mEmail.getText());
 
+                // if user skipped some field
                 for (String str : mUserData){
                     if(str.isEmpty()){
                         Toast toast = Toast.makeText(getActivity(), "Fill all fields", Toast.LENGTH_SHORT);
@@ -55,21 +53,26 @@ public class SecondTabFragment extends Fragment {
                     }
                 }
 
-                SqlDataManager sqlManager = new SqlDataManager(getActivity());
-                // Gets the data repository in write mode
-                SQLiteDatabase db = sqlManager.getWritableDatabase();
+                // get writable DB
+                SQLiteDatabase db = new SqlDataManager(getActivity()).getWritableDatabase();
 
-                // Create a new map of values, where column names are the keys
+                // prepare values for input
                 ContentValues values = new ContentValues();
                 values.put(SqlDataManager.NAME, mUserData[0]);
                 values.put(SqlDataManager.LAST_NAME, mUserData[1]);
                 values.put(SqlDataManager.PHONE, Integer.parseInt(mUserData[2]));
                 values.put(SqlDataManager.EMAIL, mUserData[3]);
 
+                // insert data into DB
                 db.insert(SqlDataManager.TABLE_NAME, null, values);
 
-                Toast toast = Toast.makeText(getActivity(), "Data have been sent", Toast.LENGTH_SHORT);
-                toast.show();
+                // clear fields
+                mFirstName.setText("");
+                mLastName.setText("");
+                mPhone.setText("");
+                mEmail.setText("");
+
+                Toast.makeText(getActivity(), "Data have been sent", Toast.LENGTH_SHORT).show();
 
             }
         });
