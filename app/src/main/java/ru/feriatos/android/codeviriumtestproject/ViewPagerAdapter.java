@@ -3,6 +3,8 @@ package ru.feriatos.android.codeviriumtestproject;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.util.Log;
+
 import ru.feriatos.android.codeviriumtestproject.tab_fragments.FirstTabFragment;
 import ru.feriatos.android.codeviriumtestproject.tab_fragments.SecondTabFragment;
 
@@ -28,6 +30,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
         // return tab corresponding to the position
         if (position == 0) return new FirstTabFragment();
         else return new SecondTabFragment();
+
     }
 
     // This method return the titles for the Tabs in the Tab Strip
@@ -40,5 +43,9 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public int getCount() {
         return mNumbOfTabs;
+    }
+
+    public void startUpdate(){
+
     }
 }
