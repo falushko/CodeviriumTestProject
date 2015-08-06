@@ -15,6 +15,8 @@ import android.widget.Toast;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import ru.feriatos.android.codeviriumtestproject.tab_fragments.FirstTabFragment;
+
 public class DetailsActivity extends AppCompatActivity{
 
     Toolbar toolbar;

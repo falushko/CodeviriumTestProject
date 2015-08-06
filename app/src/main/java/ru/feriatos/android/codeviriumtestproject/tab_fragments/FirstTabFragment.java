@@ -22,13 +22,21 @@ import ru.feriatos.android.codeviriumtestproject.SqlDataManager;
 
 public class FirstTabFragment extends Fragment {
 
-    ListView mListView;
+    public static ListView mListView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_first_tab, container, false);
 
         mListView = (ListView)v.findViewById(R.id.listView);
+
+
+
+        return v;
+    }
+
+    public void onResume(){
+        super.onResume();
 
         // get readable DB
         SQLiteDatabase db = new SqlDataManager(getActivity()).getReadableDatabase();
@@ -69,6 +77,7 @@ public class FirstTabFragment extends Fragment {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, usersList);
         mListView.setAdapter(adapter);
 
+
         // list item click listener
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -87,7 +96,5 @@ public class FirstTabFragment extends Fragment {
 
             }
         });
-
-        return v;
     }
 }

@@ -1,6 +1,8 @@
 package ru.feriatos.android.codeviriumtestproject.sliding_tabs;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -12,11 +14,16 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import ru.feriatos.android.codeviriumtestproject.R;
+import ru.feriatos.android.codeviriumtestproject.SqlDataManager;
+import ru.feriatos.android.codeviriumtestproject.tab_fragments.FirstTabFragment;
 
 /**
  * To be used with ViewPager to provide a tab indicator component which give constant feedback as to
