@@ -11,6 +11,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import ru.feriatos.android.codeviriumtestproject.R;
 import ru.feriatos.android.codeviriumtestproject.SqlDataManager;
 
@@ -47,10 +50,16 @@ public class SecondTabFragment extends Fragment {
                 // if user skipped some field
                 for (String str : mUserData){
                     if(str.isEmpty()){
-                        Toast toast = Toast.makeText(getActivity(), "Fill all fields", Toast.LENGTH_SHORT);
-                        toast.show();
+                        Toast.makeText(getActivity(), "Fill all fields", Toast.LENGTH_SHORT).show();
                         return;
                     }
+                }
+
+                Pattern pattern = Pattern.compile("\\w{2,}@\\w{2,}\\.\\w{2,}");
+                Matcher matcher = pattern.matcher(mUserData[3]);
+                if(!matcher.find()){
+                    Toast.makeText(getActivity(), "Enter correct email", Toast.LENGTH_SHORT).show();
+                    return;
                 }
 
                 // get writable DB
